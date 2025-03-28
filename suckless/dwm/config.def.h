@@ -125,20 +125,24 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "wezterm", NULL };
 #include "movestack.c"
 
-// Toggles keyboard passthrough mode (for VMs), with dunst notifications
+// Toggles BOTH keyboard and mouse passthrough mode with dunst notifications
 static int grab_active = 0;
 
 void
-togglekbgrab(const Arg *arg)
+toggleinputgrab(const Arg *arg)
 {
     if (grab_active) {
-        XUngrabKeyboard(dpy, CurrentTime); // Restore DWM shortcuts
-        system("dunstify -u normal 'DWM' 'Keyboard Passthrough OFF'"); // notify OFF
+        XUngrabKeyboard(dpy, CurrentTime); // keyboard shortcuts back to DWM
+        XUngrabPointer(dpy, CurrentTime);  // mouse events back to DWM
+        system("dunstify -u normal 'DWM' 'Input Passthrough OFF'");
         grab_active = 0;
     } else {
         XGrabKeyboard(dpy, DefaultRootWindow(dpy), True,
-                      GrabModeAsync, GrabModeAsync, CurrentTime); // Passthrough ON
-        system("dunstify -u normal 'DWM' 'Keyboard Passthrough ON'");  // notify ON
+                      GrabModeAsync, GrabModeAsync, CurrentTime); // keyboard passthrough
+        XGrabPointer(dpy, DefaultRootWindow(dpy), True,
+                     ButtonPressMask | ButtonReleaseMask | PointerMotionMask,
+                     GrabModeAsync, GrabModeAsync, None, None, CurrentTime); // mouse passthrough
+        system("dunstify -u normal 'DWM' 'Input Passthrough ON'");
         grab_active = 1;
     }
 }
@@ -212,7 +216,7 @@ static const Key keys[] = {
 	{ MODKEY|Mod1Mask,			    XK_Tab,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,				XK_r,      quit,           {1} },
-	{ MODKEY|ShiftMask, 			XK_g, 	   togglekbgrab, {0} }, 
+	{ MODKEY|ShiftMask, 			XK_g, 	   toggleinputgrab, {0} }, 
 	{ MODKEY,            			XK_v,  	   togglescratch,  {.ui = 0 } },
 	{ MODKEY,            			XK_r,  	   togglescratch,  {.ui = 1 } },
 };

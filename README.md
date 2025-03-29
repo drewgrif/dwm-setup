@@ -1,60 +1,62 @@
-# JustAGuy Linux DWM Build
+# 🧱 dwm-setup
 
-This is my customized build of [dwm](https://dwm.suckless.org/), designed for my personal workflow. It includes essential patches, a customized `config.def.h`, and pre-defined keybindings to enhance the tiling window manager experience.
+A minimal but powerful DWM setup script for Debian-based systems.  
+Includes custom patches, layout enhancements, and smart keybindings — ready to roll out of the box.
+
+> Part of the [JustAGuy Linux](https://github.com/drewgrif) window manager collection.
 
 ![2025-03-27_03-24](https://github.com/user-attachments/assets/e3f8481a-8eb4-420c-bf84-77218c29a679)
 
 ---
 
-## Features
+## 🚀 Installation
 
-- Dynamic window management with floating and tiling modes
-- Keybindings for window navigation, layouts, and scratchpads
-- Integration with `sxhkd` for extended keybinding management
-- Custom `rofi` keybinding viewer (optional)
-- `slstatus` for system information in the bar
-- `ft-picom` for transparent windows and compositing
-- `dunst` for lightweight notifications
-- `fastfetch` for screenshots and system hardware
-- `themed` using [Orchis GTK Theme](https://github.com/vinceliuice/Orchis-theme) | [Colloid Dark Icon Theme](https://github.com/vinceliuice/Colloid-icon-theme)
+```bash
+git clone https://github.com/drewgrif/dwm-setup.git
+cd dwm-setup
+chmod +x install.sh
+./install.sh
+```
 
----
-
-## 📥 Installation Summary
-
-| Programs | Category |
-|---|---|
-| wezterm | Terminal (main) |
-| tilix | Terminal (quake mode) |
-| dmenu | Application Launcher |
-| rofi | Application Launcher |
-| slstatus | Status Bar |
-| ft-picom | Compositor |
-| dunst | Notification Daemon |
-| sxhkd | Keybinding Daemon |
+This assumes a fresh Debian or Debian-based install with `sudo` access.
 
 ---
 
-## Features
+## 📦 What It Installs
 
-- Dynamic window management with floating and tiling modes
-- Keybindings for window navigation, layouts, and scratchpads
-- Integration with `sxhkd` for extended keybinding management
-- Custom `rofi` keybinding viewer (optional)
+| Component           | Purpose                          |
+|---------------------|----------------------------------|
+| `dwm`               | Tiling window manager (patched)  |
+| `sxhkd`             | Keybinding daemon                |
+| `slstatus`          | Status bar for DWM               |
+| `thunar`            | File Manager (+plugins)          |
+| `picom` `(FT-Labs)` | Compositor with transparency     |
+| `dunst`             | Lightweight notifications        |
+| `rofi`              | App launcher + keybind viewer    |
+| `dmenu`             | Minimal app launcher alternative |
+| `wezterm`           | Main terminal emulator           |
+| `tilix`             | Quake-style terminal option      |
+| `firefox-esr`       | Default web browser              |
+| `geany` + `plugins `| Lightweight IDE                  |
+| `fastfetch`         | System info for screenshots      |
+| `nala`              | Better apt frontend              |
+| `pipewire`          | Audio handling                   |
+| `flameshot`,        | Screenshot tools                 |
+| `micro`             | Terminal text editor             |
+| `redshift`          | Night light                      |
+| `qimgv`             | Lightweight image viewer         |
+| `fzf`, etc.         | Utilities & enhancements         |
 
+
+> 📄 _Need help with Geany? See the full guide at [justaguylinux.com/documentation/software/geany](https://justaguylinux.com/documentation/software/geany)_
 ---
 
-## 📂 Configuration Files
+## 🎨 Appearance & Theming
 
-| File | Description |
-|---|---|
-| `~/.config/suckless/scripts/autostart.sh` | Autostart commands on login |
-| `~/.config/suckless/dwm/keybindings.txt` | Human-readable DWM keybindings |
-| `~/.config/suckless/sxhkd/sxhkdrc` | Keybindings for `sxhkd` |
-| `~/.config/suckless/rofi/keybinds.rasi` | Theme for `rofi` keybinding viewer |
-| `~/.config/suckless/dunst/dunstrc` | Notification settings |
-| `~/.config/suckless/picom/picom.conf` | Compositor settings |
-| `~/.config/wezterm/wezterm.lua` | WezTerm config location |
+- GTK Theme: [Orchis](https://github.com/vinceliuice/Orchis-theme)
+- Icon Theme: [Colloid](https://github.com/vinceliuice/Colloid-icon-theme)
+
+> 💡 _Special thanks to [vinceliuice](https://github.com/vinceliuice) for the excellent GTK and icon themes._
 
 ---
 
@@ -62,109 +64,116 @@ This is my customized build of [dwm](https://dwm.suckless.org/), designed for my
 
 Keybindings are stored in:
 
-- `~/.config/suckless/dwm/keybindings.txt` for **DWM keybindings**.
-- `~/.config/suckless/sxhkd/sxhkdrc` for **sxhkd keybindings**.
+- `~/.config/suckless/dwm/config.def.h` for **DWM keybindings**
+- `~/.config/suckless/sxhkd/sxhkdrc` for **sxhkd keybindings**
 
-You can view both in a combined `rofi` menu using:
+Launch the keybind cheatsheet anytime with:
 
-``` ~/.config/suckless/scripts/help ```
+```bash
+~/.config/suckless/scripts/help
+```
+
+| Shortcut             | Action                          |
+|----------------------|---------------------------------|
+| `Super + Enter`      | Launch terminal (WezTerm)       |
+| `Super + Space`      | Launch rofi                     |
+| `Super + H`          | Open keybind help via Rofi      |
+| `Super + Q`          | Close focused window            |
+| `Super + Shift + R`  | Restart DWM                     |
+| `Super + Shift + L`  | Cycle through layouts           |
+| `Super + 1–=`        | Switch to tag                   |
+| `Super + Shift + 1–=`| Move window to tag              |
 
 ---
 
-## 🧱 Layouts Overview
+## 🧱 Layouts
 
-You can cycle through available window layouts using:
+Cycle layouts using:
 
-```
+```text
 Super + Shift + L
 ```
 
 <details>
 <summary>Click to expand layout descriptions</summary>
 
-<br>
+These are the layouts included in this build, in the exact order from `config.def.h`:
 
-These are the layouts included in this build, in the exact order they appear in `config.def.h`:
-
-- **`dwindle`** (`[\]`)  
-  Fibonacci-style dwindle layout (spirals inward) — **default layout**
-
-- **`tile`** (`[]=`)  
-  Classic master-stack tiling layout
-
-- **`columnlayout`** (`[C]`)  
-  Windows arranged in vertical columns
-
-- **`centeredmaster`** (`|M|`)  
-  Master window in center, slaves on sides (tiling)
-
-- **Floating** (`><>`)  
-  No layout function (`NULL`) — windows float freely
-
-- **`bstack`** (`TTT`)  
-  Master on top, stack below
-
-- **`nrowgrid`** (`###`)  
-  Grid layout with a fixed number of rows
-
-- **`deck`** (`H[]`)  
-  Master window with a tabbed stack
-
-- **`gaplessgrid`** (`:::`)  
-  Grid layout with no gaps
-
-- **`spiral`** (`[@]`)  
-  Classic Fibonacci spiral layout
-
-- **`monocle`** (`[M]`)  
-  All windows stacked fullscreen
-
-- **`grid`** (`HHH`)  
-  Even grid of windows
-
-- **`bstackhoriz`** (`===`)  
-  Like `bstack`, but evenly split horizontally
-
-- **`deck`** (again) (`H[]`)  
-  Duplicate — may serve as an alternate
-
-- **`centeredfloatingmaster`** (`>M>`)  
-  Floating windows with a centered master window
-
-- **`horizgrid`** (`---`)  
-  Horizontal grid — useful for wide monitors
+- **`dwindle`** (`[\]`) — Fibonacci-style dwindle layout (default)
+- **`tile`** (`[]=`) — Classic master-stack
+- **`columnlayout`** (`[C]`) — Vertical column view
+- **`centeredmaster`** (`|M|`) — Centered master, tiled sides
+- **Floating** (`><>`) — Free window placement
+- **`bstack`** (`TTT`) — Master on top, stack below
+- **`nrowgrid`** (`###`) — Grid with fixed rows
+- **`deck`** (`H[]`) — Master with tabbed stack
+- **`gaplessgrid`** (`:::`) — Even, gapless grid
+- **`spiral`** (`[@]`) — Spiral Fibonacci layout
+- **`monocle`** (`[M]`) — Fullscreen stacked windows
+- **`grid`** (`HHH`) — Even grid
+- **`bstackhoriz`** (`===`) — Horizontal bstack
+- **`centeredfloatingmaster`** (`>M>`) — Centered floating master
+- **`horizgrid`** (`---`) — Wide-monitor horizontal grid
 
 </details>
 
 ---
 
-## 📝 Patches Summary
+## 📂 Configuration Files
 
-| Patch | Category |
-|---|---|
-| alwayscenter | Floating windows |
-| attachbottom | Window order |
-| cool-autostart | Autostart |
-| fixborders | Visual fix |
-| focusadjacenttag | Navigation |
-| focusedontop | Floating windows |
-| focusonnetactive | Compatibility |
-| movestack | Window management |
-| pertag | Layout memory |
-| preserveonrestart | Session persistence |
-| restartsig | Restart ability |
-| scratchpads | Workflow |
-| status2d-systray | Bar features |
-| togglefloatingcenter | Floating windows |
-| vanitygaps | Visual spacing |
-| windowfollow | Navigation |
+```
+~/.config/suckless/
+├── dwm/
+│   ├── config.h             # Main DWM configuration
+├── st/
+│   └── config.h             # Barely Patched st terminal configuration
+├── slstatus/
+│   └── config.h             # Status bar configuration
+├── sxhkd/
+│   └── sxhkdrc              # Keybindings for sxhkd
+├── dunst/
+│   └── dunstrc              # Notification settings
+├── picom/
+│   └── picom.conf           # Compositor configuration
+├── rofi/
+│   └── keybinds.rasi        # Rofi keybinding cheatsheet
+└── scripts/
+    ├── autostart.sh         # Startup script
+    └── help                 # Launches keybind viewer
 
+~/.config/wezterm/
+└── wezterm.lua              # Terminal configuration
+```
 
 ---
 
-## 📜 Patch Documentation: Your DWM Patch List
+## 🧩 Patches Summary
+
+| Patch                  | Category                |
+|------------------------|-------------------------|
+| alwayscenter           | Floating windows        |
+| attachbottom           | Window order            |
+| cool-autostart         | Autostart               |
+| fixborders             | Visual fix              |
+| focusadjacenttag       | Navigation              |
+| focusedontop           | Floating windows        |
+| focusonnetactive       | Compatibility           |
+| movestack              | Window management       |
+| pertag                 | Layout memory           |
+| preserveonrestart      | Session persistence     |
+| restartsig             | Restart ability         |
+| scratchpads            | Workflow                |
+| status2d-systray       | Bar features            |
+| togglefloatingcenter   | Floating windows        |
+| vanitygaps             | Visual spacing          |
+| windowfollow           | Navigation              |
 
 ---
+
+## 📜 Patch Documentation
+
+<details>
+<summary>Click to expand Patch Documenation</summary>
 
 ### 1. `dwm-alwayscenter-20200625-f04cac6.diff`
 **What it does:**  
@@ -312,4 +321,9 @@ Makes it so that when you move a window to another tag, DWM will **follow you to
 **Why it's useful:**  
 Enhances workflow — instead of moving a window to another tag and then manually switching to that tag, DWM follows automatically.
 
+</details>
 
+## 📺 Watch on YouTube
+
+Want to see how it looks and works?  
+🎥 Check out [JustAGuy Linux on YouTube](https://www.youtube.com/@JustAGuyLinux)

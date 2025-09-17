@@ -190,6 +190,7 @@ Launch the keybind cheatsheet anytime with:
 | `Super + Shift + F`  | Toggle fullscreen mode          |
 | `Super + Shift + T`  | Toggle scratchpad terminal      |
 | `Super + Shift + A`  | Toggle audio mixer (pulsemixer) |
+| `Super + R`          | Toggle ranger file manager      |
 | `Super + F`          | Launch file manager (Thunar)    |
 | `Super + B`          | Launch Firefox browser          |
 | `Super + E`          | Launch text editor (Geany)      |
@@ -277,7 +278,7 @@ These are the layouts included in this build, in the exact order from `config.de
 | pertag                 | Layout memory           | 6.2     |
 | preserveonrestart      | Session persistence     | 6.3     |
 | restartsig             | Restart ability         | 6.2     |
-| scratchpad             | Workflow                | 6.5     |
+| namedscratchpads       | Multiple scratchpads    | 6.5     |
 | status2d-systray       | Bar features            | 6.4     |
 | sticky                 | Window management       | 6.5     |
 | togglefloatingcenter   | Floating windows        | 6.2     |
@@ -398,14 +399,17 @@ Allows easy config reloads and minor changes without logging out, pairing well w
 
 ---
 
-### 12. `dwm-scratchpad-20240321-061e9fe.diff`
-**What it does:**  
-Implements **scratchpad**, allowing you to spawn hidden windows (like a drop-down terminal).
+### 12. `dwm-namedscratchpads-6.5.diff`
+**What it does:**
+Implements **named scratchpads**, allowing you to create multiple independent scratchpad windows that can be toggled individually.
 
-**Why it's useful:**  
-A classic feature from workflows like i3 and bspwm. Scratchpad is great for terminals, music players, or quick note apps.
+**Why it's useful:**
+An enhanced version of the classic scratchpad feature. Unlike traditional scratchpad that only supports one window, named scratchpads let you have multiple floating windows (terminals, file managers, etc.) that can be summoned with different keybindings. Perfect for quick access to commonly used tools without cluttering your workspace.
 
-**Usage:** Press `Super + Shift + T` to toggle the scratchpad terminal, or `Super + Shift + A` to toggle the audio mixer scratchpad.
+**Usage:**
+- `Super + Shift + T` - Toggle scratchpad terminal
+- `Super + Shift + A` - Toggle audio mixer (pulsemixer)
+- `Super + R` - Toggle ranger file manager
 
 ---
 

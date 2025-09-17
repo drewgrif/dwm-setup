@@ -43,19 +43,21 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                instance    title       tags mask     isfloating   iscentered   monitor */
-	{ "Gimp",               NULL,       NULL,       1 << 8,       0,           0,           -1 },
-	{ "GitHub Desktop",     NULL,       NULL,       1 << 1,       0,           1,           -1 },
-	{ "obs",                NULL,       NULL,       1 << 9,       0,           0,           -1 },
-	{ "discord",            NULL,       NULL,       1 << 7,       0,           0,           -1 },
-	{ "mpv",                NULL,       NULL,       0,            1,           1,           -1 },
-	{ "qimgv",              NULL,       NULL,       0,            1,           1,           -1 },
-	{ "Galculator",         NULL,       NULL,       0,            1,           1,           -1 },
-	{ "Transmission-gtk",   NULL,       NULL,       0,            1,           1,           -1 },
-	{ "Lxappearance",       NULL,       NULL,       0,            1,           1,           -1 },
-	{ "Pavucontrol",        NULL,       NULL,       0,            1,           1,           -1 },
-	{ "Thunar",             NULL,       NULL,       0,            0,           1,           -1 },
-	{ "st",                 NULL,       NULL,       0,            1,           1,           -1 }
+	/* class                instance    title       tags mask     isfloating   iscentered   monitor    scratch key */
+	{ "Gimp",               NULL,       NULL,       1 << 8,       0,           0,           -1,        0  },
+	{ "GitHub Desktop",     NULL,       NULL,       1 << 1,       0,           1,           -1,        0  },
+	{ "obs",                NULL,       NULL,       1 << 9,       0,           0,           -1,        0  },
+	{ "discord",            NULL,       NULL,       1 << 7,       0,           0,           -1,        0  },
+	{ "mpv",                NULL,       NULL,       0,            1,           1,           -1,        0  },
+	{ "qimgv",              NULL,       NULL,       0,            1,           1,           -1,        0  },
+	{ "Galculator",         NULL,       NULL,       0,            1,           1,           -1,        0  },
+	{ "Transmission-gtk",   NULL,       NULL,       0,            1,           1,           -1,        0  },
+	{ "Lxappearance",       NULL,       NULL,       0,            1,           1,           -1,        0  },
+	{ "Pavucontrol",        NULL,       NULL,       0,            1,           1,           -1,        0  },
+	{ "Thunar",             NULL,       NULL,       0,            0,           1,           -1,        0  },
+	{ "st-256color",        NULL,   "scratchpad",   0,            1,           1,           -1,       's' },
+	{ "st-256color",        NULL,   "pulsemixer",   0,            1,           1,           -1,       'a' },
+	{ "st-256color",        NULL,     "ranger",     0,            1,           1,           -1,       'r' }
 };
 
 /* window following */
@@ -109,11 +111,10 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "wezterm", NULL };
 
-/* scratchpads */
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
-
-static const char *spcmd1[] = {"st", "-n", "spterm1", "-g", "100x34", "-e", "pulsemixer", NULL };
+/*First arg only serves to match against key in rules*/
+static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", NULL};
+static const char *pulsemixercmd[] = {"a", "st", "-t", "pulsemixer", "-e", "pulsemixer", NULL};
+static const char *rangercmd[] = {"r", "st", "-t", "ranger", "-e", "ranger", NULL};
 
 #include "movestack.c"
 static const Key keys[] = {
@@ -121,7 +122,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_t,      togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY|ShiftMask,             XK_a,      togglescratch,  {.v = spcmd1 } },      /* pulsemixer (audio) */
+	{ MODKEY|ShiftMask,             XK_a,      togglescratch,  {.v = pulsemixercmd } },
+	{ MODKEY,                       XK_r,      togglescratch,  {.v = rangercmd } },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },

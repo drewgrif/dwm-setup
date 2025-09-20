@@ -6,7 +6,7 @@
 >
 > - **Primary repository**: https://codeberg.org/justaguylinux/dwm-setup
 > - **This GitHub repository**: Mirror only (read-only)
-> - **Migration deadline**: January 1, 2025 - GitHub mirror will be archived
+> - **Migration deadline**: December 15, 2025 - GitHub mirror will be archived
 >
 > Please update your bookmarks and git remotes:
 > ```bash

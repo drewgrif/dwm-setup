@@ -1,5 +1,18 @@
 # 🧱 dwm-setup
 
+> **🚨 REPOSITORY MIGRATION NOTICE**
+>
+> This repository has moved to **[Codeberg](https://codeberg.org/justaguylinux/dwm-setup)**
+>
+> - **Primary repository**: https://codeberg.org/justaguylinux/dwm-setup
+> - **This GitHub repository**: Mirror only (read-only)
+> - **Migration deadline**: January 1, 2025 - GitHub mirror will be archived
+>
+> Please update your bookmarks and git remotes:
+> ```bash
+> git remote set-url origin https://codeberg.org/justaguylinux/dwm-setup.git
+> ```
+
 ![Made for Debian](https://img.shields.io/badge/Made%20for-Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white)
 ![DWM Version](https://img.shields.io/badge/DWM-6.6-005577?style=for-the-badge&logo=c&logoColor=white)
 

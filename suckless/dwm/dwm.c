@@ -1790,6 +1790,8 @@ tagtoright(const Arg *arg) {
 		focus(NULL);
 		arrange(selmon);
 	}
+	if (selmon->wfsymbol[0] == WFACTIVE)
+		view(arg);
 }
 
 void
@@ -2337,6 +2339,8 @@ tag(const Arg *arg)
 		focus(NULL);
 		arrange(selmon);
 	}
+	if (selmon->wfsymbol[0] == WFACTIVE)
+		view(arg);
 }
 
 void
@@ -3088,4 +3092,3 @@ main(int argc, char *argv[])
 	XCloseDisplay(dpy);
 	return EXIT_SUCCESS;
 }
-

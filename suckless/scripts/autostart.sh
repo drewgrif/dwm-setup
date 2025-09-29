@@ -2,9 +2,6 @@
 
 slstatus &
 
-# nextcloud
-# ~/Applications/Nextcloud-3.16.4-x86_64.AppImage &
-
 # polkit
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 

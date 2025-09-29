@@ -6,7 +6,7 @@ slstatus &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 # background
-feh --bg-scale ~/.config/suckless/wallpaper/wallhaven-3q9vmd_3440x1440.png &
+feh --bg-scale ~/.config/suckless/wallpaper/wallhaven-218x7m_3440x1440.png &
 
 # sxhkd
 # (re)load sxhkd for keybinds

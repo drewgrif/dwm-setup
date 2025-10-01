@@ -1,4 +1,4 @@
-# 🧱 dwm-setup
+# 🔲 dwm-setup
 
 > **🚨 REPOSITORY MIGRATION NOTICE**
 >

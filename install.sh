@@ -161,7 +161,7 @@ PACKAGES_CORE=(
 )
 
 PACKAGES_UI=(
-    rofi dunst feh lxappearance network-manager-gnome
+    rofi dunst feh lxappearance network-manager-gnome lxpolkit
 )
 
 PACKAGES_FILE_MANAGER=(
